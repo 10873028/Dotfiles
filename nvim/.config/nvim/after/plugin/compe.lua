@@ -4,8 +4,8 @@ if not status then return end
 function _G._smart_tab()
     if vim.fn.pumvisible() == 1 then
         return _t("<C-n>")
-    elseif vim.fn["vsnip#available"](1) == 1 then
-        return _t("<Plug>(vsnip-expand-or-jump)")
+    elseif vim.fn["vsnip#jumpable"](1) == 1 then
+        return _t("<Plug>(vsnip-jump-next)")
     elseif _check_back_space() then
         return _t("<Tab>")
     else
