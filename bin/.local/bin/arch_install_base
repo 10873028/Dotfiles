@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+while [[ -z $INSTALLERHOSTNAME ]]
+do
+    read -r -p "Hostname: " INSTALLERHOSTNAME
+done
+
+while [[ -z $INSTALLERUSERNAME ]]
+do
+    read -r -p "Username: " INSTALLERUSERNAME
+    for (( i=0; i<${#INSTALLERUSERNAME}; i++ ))
+    do
+        if [[ ${INSTALLERUSERNAME:$i:1} != [[:lower:]] ]]
+        then
+            echo -e "$INSTALLERUSERNAME is not valid"
+            INSTALLERUSERNAME=""
+            break
+        fi
+    done
+done
+
+while [[ -z $INSTALLERPASSWORD ]]
+do
+    read -r -p "Password: " INSTALLERPASSWORD
+done
+
+ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
+hwclock --systohc
+sed -i '177s/.//' /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+echo -e $INSTALLERHOSTNAME >> /etc/hostname
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1       localhost" >> /etc/hosts
+echo -e "127.0.1.1 $INSTALLERHOSTNAME.localdomain $INSTALLERHOSTNAME" >> /etc/hosts
+echo root:$INSTALLERPASSWORD | chpasswd
+
+pacman -Syy --needed grub efibootmgr dhcpcd openssh libimobiledevice base-devel linux-lts-headers alsa-utils pulseaudio pulseaudio-alsa bash-completion rsync reflector nvidia-lts nvidia-utils nvidia-settings
+
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+
+systemctl enable sshd
+systemctl enable dhcpcd
+systemctl enable fstrim.timer
+systemctl enable reflector.timer
+
+useradd -m $INSTALLERUSERNAME
+echo $INSTALLERUSERNAME:$INSTALLERPASSWORD | chpasswd
+echo -e "$INSTALLERUSERNAME ALL=(ALL) ALL" >> /etc/sudoers.d/$INSTALLERUSERNAME
+
+mv /dotfiles /home/$INSTALLERUSERNAME/
+chown -R $INSTALLERUSERNAME:$INSTALLERUSERNAME /home/$INSTALLERUSERNAME/dotfiles
+
+echo -e "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"

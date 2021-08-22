@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SELECTED="$(ps -a -u $USER | awk 'NR!=1{print $1" "$4}' | dmenu -i)"
+[[ -z $SELECTED ]] && exit 1
+
+CONFIRM="$(echo -e "Yes\nNo" | dmenu -i -p "$SELECTED")"
+
+if [[ $CONFIRM = "Yes" ]]; then
+    PID="$(awk '{print $1}' <<< $SELECTED)"
+    SELECTED="$(awk '{print $2}' <<< $SELECTED)"
+    kill -9 $PID
+    exit 0
+fi
+exit 1

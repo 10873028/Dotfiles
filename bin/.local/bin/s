@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [[ -z $1 ]]
+then
+    echo -e "\e[1;31merror: \e[0margument not found."
+    exit 1
+elif [[ -f $1 ]]
+then
+    echo -e "\e[1;31merror: \e[0m$1 already exists."
+    exit 1
+elif [[ -z $EDITOR ]]
+then
+    echo -e "\e[1;31merror: \e[0meditor not found."
+    exit 1
+fi
+
+echo '#!/usr/bin/env bash' > $1 && chmod 700 $1
+$EDITOR $1
+exit 0

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+printf "cleaning trash..."
+trash-empty 2> /dev/null && echo -e "\e[1;32mDONE\e[0m" || echo -e "\e[1;31mFAILED\e[0m"
+printf "cleaning bash history..."
+rm -rf ~/.bash* && echo -e "\e[1;32mDONE\e[0m" || echo -e "\e[1;31mFAILED\e[0m"
+printf "cleaning less history..."
+rm -rf ~/.lesshst && echo -e "\e[1;32mDONE\e[0m" || echo -e "\e[1;31mFAILED\e[0m"
+printf "cleaning cache..."
+rm -rf ~/.cache/* && echo -e "\e[1;32mDONE\e[0m" || echo -e "\e[1;31mFAILED\e[0m"
+sudo journalctl --vacuum-time=1week
+yes | sudo pacman -Scc
+sudo pacman -Rns $(pacman -Qdtq) 2> /dev/null
+echo -e "\e[1;32mDONE\e[0m"
+exit 0

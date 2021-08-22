@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+if [[ -z $1 ]]
+then
+    echo -e "\e[1;31merror: \e[0margument not found."
+    exit 1
+elif [[ -f $1.h ]] && [[ -f $1.cpp ]]
+then
+    echo -e "\e[1;31merror: \e[0m$1.h already exists."
+    echo -e "\e[1;31merror: \e[0m$1.cpp already exists."
+    exit 1
+elif [[ -f $1.cpp ]]
+then
+    echo -e "\e[1;31merror: \e[0m$1.cpp already exists."
+    exit 1
+elif [[ -f $1.h ]]
+then
+    echo -e "\e[1;31merror: \e[0m$1.h already exists."
+    exit 1
+fi
+
+echo '#pragma once' > "$1.h" || exit 1
+echo "#include \"$1.h\"" > "$1.cpp" || exit 1
+echo -e "\e[1;32mDONE\e[0m"
+exit 0

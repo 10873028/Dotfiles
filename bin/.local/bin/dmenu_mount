@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+[[ -z $TERMINAL ]] && exit 1
+SELECTED="$(echo -e "MOUNT\nUMOUNT" | dmenu -i)"
+case $SELECTED in 
+    "MOUNT")
+        PARTITION="$(lsblk -rno name,size,mountpoint,fstype | awk 'NF==3{print $1}' | dmenu -i -p $SELECTED)"
+        if [[ ! -z $PARTITION ]]; then
+            $TERMINAL -e sudo mount -o gid=$USER,fmask=113,dmask=002,x-mount.mkdir /dev/$PARTITION $HOME/mnt
+        fi
+        exit 0 ;;
+    "UMOUNT")
+        PARTITION="$(lsblk -rno name,mountpoint | awk 'NF==2{print $2}' | dmenu -i -p $SELECTED)"
+        if [[ ! -z $PARTITION ]]; then
+            $TERMINAL -e sudo umount $PARTITION
+        fi
+        exit 0 ;;
+esac
+exit 1

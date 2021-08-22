@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+if [[ -z $EDITOR ]]
+then
+    echo -e "\e[1;31merror: \e[0meditor not found."
+    exit 1
+fi
+
+DATE="$(date +"%Y%m%d_%H%M")"
+
+while getopts ':p:d' OPT; do
+    case $OPT in
+        d)
+            if [[ -f $DATE ]] || [[ -d $DATE ]]
+            then
+                echo -e "\e[1;31merror: \e[0m$DATE already exists."
+                exit 1
+            fi
+            mkdir $DATE || exit 1 
+            exit 0 ;;
+        p)
+            if [[ -f $DATE ]] || [[ -d $DATE ]]
+            then
+                echo -e "\e[1;31merror: \e[0m$DATE already exists."
+                exit 1
+            fi
+            mkdir $DATE && cd $DATE || exit 1
+            $EDITOR $DATE.$OPTARG || exit 1
+            exit 0 ;;
+        :)
+            if [[ -f $DATE ]] || [[ -d $DATE ]]
+            then
+                echo -e "\e[1;31merror: \e[0m$DATE already exists."
+                exit 1
+            fi
+            mkdir $DATE && cd $DATE || exit 1
+            $EDITOR $DATE || exit 1
+            exit 0 ;;
+    esac
+done
+
+if [[ -z $1 ]]
+then
+    if [[ -f $DATE ]] || [[ -d $DATE ]]
+    then
+        echo -e "\e[1;31merror: \e[0m$DATE already exists."
+        exit 1
+    else
+        $EDITOR $DATE || exit 1
+    fi
+else
+    if [[ -f $DATE.$1 ]] || [[ -d $DATE ]]
+    then
+        echo -e "\e[1;31merror: \e[0m$DATE already exists."
+        exit 1
+    else
+        $EDITOR $DATE.$1 || exit 1
+    fi
+fi
+exit 0
