@@ -28,18 +28,6 @@ formatter.setup({
                 }
             end
         },
-        cs = {
-            function()
-                return {
-                    exe = "clang-format",
-                    args = {
-                        "--style=\"{BasedOnStyle: Microsoft, AccessModifierOffset: -4, PointerAlignment: Left}\"",
-                        vim.api.nvim_buf_get_name(0)
-                    },
-                    stdin = true
-                }
-            end
-        },
         rust = {
             function()
                 return {

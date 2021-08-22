@@ -36,6 +36,5 @@ vim.opt.completeopt = "menuone,noselect"
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.shortmess:append("c")
 vim.opt.diffopt:append("vertical")
-vim.api.nvim_command([[autocmd BufWritePre * if &bomb | set nobomb | endif]])
 if vim.fn.executable("/usr/bin/python3") == 1 then
     vim.api.nvim_set_var("python3_host_prog", "/usr/bin/python3") end
