@@ -6,5 +6,6 @@ vim.api.nvim_buf_set_keymap(0, "n", "yy", "defx#do_action(\"copy\")", { noremap 
 vim.api.nvim_buf_set_keymap(0, "n", "P", "defx#do_action(\"paste\")", { noremap = true, silent = true, expr = true })
 vim.api.nvim_buf_set_keymap(0, "n", "dd", "defx#do_action(\"move\")", { noremap = true, silent = true, expr = true })
 vim.api.nvim_buf_set_keymap(0, "n", "dD", "defx#do_action(\"remove\")", { noremap = true, silent = true, expr = true })
+vim.api.nvim_buf_set_keymap(0, "n", "L", "defx#do_action(\"link\")", { noremap = true, silent = true, expr = true })
 vim.api.nvim_buf_set_keymap(0, "n", "O", "defx#do_action(\"new_file\")", { noremap = true, silent = true, expr = true })
 vim.api.nvim_buf_set_keymap(0, "n", "cw", "defx#do_action(\"rename\")", { noremap = true, silent = true, expr = true })
