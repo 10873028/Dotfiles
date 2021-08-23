@@ -25,4 +25,8 @@ return require("packer").startup(function()
     use("mhartington/formatter.nvim")
     use("hoob3rt/lualine.nvim")
     use("jose-elias-alvarez/buftabline.nvim")
+    use({
+        "Shougo/defx.nvim",
+        run = ":UpdateRemotePlugins"
+    })
 end)
