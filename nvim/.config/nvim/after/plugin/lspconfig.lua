@@ -64,3 +64,17 @@ lspconfig.rust_analyzer.setup({
         })
     }
 })
+
+lspconfig.omnisharp.setup({
+    on_attach = on_attach,
+    cmd = { "omnisharp", "--languageserver", tostring(vim.fn.getpid()) },
+    handlers = {
+        [ "textDocument/publishDiagnostics" ] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+            underline = true,
+            virtual_text = true,
+            signs = true,
+            update_in_insert = true
+        })
+    }
+})
