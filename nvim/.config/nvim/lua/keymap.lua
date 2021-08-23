@@ -31,6 +31,8 @@ vim.api.nvim_set_keymap("n", "<Leader>J", "<Cmd>wincmd J<CR>", { noremap = true,
 vim.api.nvim_set_keymap("n", "<Leader>K", "<Cmd>wincmd K<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>L", "<Cmd>wincmd L<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader><BS>", "<Cmd>wincmd =<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>+", "<Cmd>resize+5<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>_", "<Cmd>resize-5<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>=", "<Cmd>vertical resize+5<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>-", "<Cmd>vertical resize-5<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("x", "J", "<Esc><Cmd>'<,'>m '>+1<CR>gv=gv", { noremap = true, silent = true })
