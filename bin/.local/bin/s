@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
+# script to create a file as bash script and executable.
 
-if [[ -z $1 ]]
+if [[ $# > 1 ]]
+then
+    echo -e "\e[1;31merror: \e[0mtoo may arguments."
+    exit 1
+elif [[ -z $1 ]]
 then
     echo -e "\e[1;31merror: \e[0margument not found."
     exit 1

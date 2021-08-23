@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# dmenu script to search and kill processing program.
 
 SELECTED="$(ps -a -u $USER | awk 'NR!=1{print $1" "$4}' | dmenu -i)"
 [[ -z $SELECTED ]] && exit 1

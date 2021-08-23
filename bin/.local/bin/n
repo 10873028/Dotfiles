@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# script to create time based file or directory.
 
 if [[ -z $EDITOR ]]
 then

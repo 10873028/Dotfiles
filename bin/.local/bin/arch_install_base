@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# script to install arch linux.
 
 while [[ -z $INSTALLERHOSTNAME ]]
 do

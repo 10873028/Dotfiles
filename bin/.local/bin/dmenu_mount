@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# dmenu script to mount or umount partition.
 
 [[ -z $TERMINAL ]] && exit 1
 SELECTED="$(echo -e "MOUNT\nUMOUNT" | dmenu -i)"

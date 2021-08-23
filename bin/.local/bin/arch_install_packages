@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# script to setup working enviroment.
 
 sudo timedatectl set-ntp true
 sudo hwclock --systohc
