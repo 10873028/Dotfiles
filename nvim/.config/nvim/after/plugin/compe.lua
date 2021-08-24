@@ -20,7 +20,7 @@ function _G._smart_s_tab()
         return _t("<Plug>(vsnip-jump-prev)")
     else
         return _t("<S-Tab>")
-  end
+    end
 end
 
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua._smart_tab()", { silent = true, expr = true })
