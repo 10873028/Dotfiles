@@ -26,6 +26,6 @@ function _G.sp_term()
     end
 end
 
-vim.api.nvim_set_keymap("n", "<F7>", "<Cmd>lua sp_term()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<F8>", "<Cmd>lua vs_term()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<F7>", "<Cmd>lua sp_term()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<F8>", "<Cmd>lua vs_term()<CR>", {noremap = true, silent = true})
 vim.api.nvim_command([[autocmd TermOpen term://* set filetype=term]])

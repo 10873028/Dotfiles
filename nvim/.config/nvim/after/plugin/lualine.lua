@@ -5,12 +5,12 @@ lualine.setup({
     options = {
         icons_enabled = false,
         theme = "tokyonight",
-        section_separators = { " ", " " },
-        component_separators = { " ", " " }
+        section_separators = {" ", " "},
+        component_separators = {" ", " "}
     },
     sections = {
         lualine_x = {
-            { "diagnostics", sources = { "nvim_lsp" } },
+            {"diagnostics", sources = {"nvim_lsp"}},
             "encoding",
             "filetype"
         }

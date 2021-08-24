@@ -1,7 +1,7 @@
 local status, lspconfig = pcall(require, "lspconfig")
 if not status then return end
 local on_attach = function(client, bufnr)
-    local opts = { noremap = true, silent = true }
+    local opts = {noremap = true, silent = true}
     local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     buf_set_keymap("n", "<Leader>r", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
     buf_set_keymap("n", "<Leader>d", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -14,10 +14,10 @@ local on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
 end
 
-vim.fn.sign_define("LspDiagnosticsSignError", { text = "" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "" })
-vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { text = "" })
+vim.fn.sign_define("LspDiagnosticsSignError", {text = ""})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = ""})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {text = ""})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = ""})
 
 lspconfig.pyright.setup({
     on_attach = on_attach,
@@ -67,7 +67,7 @@ lspconfig.rust_analyzer.setup({
 
 lspconfig.omnisharp.setup({
     on_attach = on_attach,
-    cmd = { "omnisharp", "--languageserver", tostring(vim.fn.getpid()) },
+    cmd = {"omnisharp", "--languageserver", tostring(vim.fn.getpid())},
     handlers = {
         [ "textDocument/publishDiagnostics" ] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {

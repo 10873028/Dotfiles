@@ -23,17 +23,17 @@ function _G._smart_s_tab()
     end
 end
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua._smart_tab()", { silent = true, expr = true })
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua._smart_tab()", { silent = true, expr = true })
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua._smart_s_tab()", { silent = true, expr = true })
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua._smart_s_tab()", { silent = true, expr = true })
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm(luaeval(\"require('nvim-autopairs').autopairs_cr()\"))", { noremap = true, silent = true, expr = true })
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua._smart_tab()", {silent = true, expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua._smart_tab()", {silent = true, expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua._smart_s_tab()", {silent = true, expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua._smart_s_tab()", {silent = true, expr = true})
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm(luaeval(\"require('nvim-autopairs').autopairs_cr()\"))", {noremap = true, silent = true, expr = true})
 
 compe.setup({
     source = {
         nvim_lsp = true,
         nvim_lua = true,
-        vsnip = { priority = 100000 },
+        vsnip = {priority = 100000},
         path = true,
         buffer = true,
         calc = true

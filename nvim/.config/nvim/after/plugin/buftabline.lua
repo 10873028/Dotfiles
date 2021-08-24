@@ -8,5 +8,5 @@ buftabline.setup({
 })
 
 for i = 0, 9 do
-    vim.api.nvim_set_keymap("n", "<Leader>"..i, "<Cmd>lua require(\"buftabline.commands\").buftarget("..i..", \"buffer\")<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<Leader>"..i, "<Cmd>lua require(\"buftabline.commands\").buftarget("..i..", \"buffer\")<CR>", {noremap = true, silent = true})
 end

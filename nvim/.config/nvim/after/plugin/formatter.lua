@@ -32,7 +32,7 @@ formatter.setup({
             function()
                 return {
                     exe = "rustfmt",
-                    args = { "--emit=stdout" },
+                    args = {"--emit=stdout"},
                     stdin = true
                 }
             end
@@ -41,7 +41,7 @@ formatter.setup({
             function()
                 return {
                     exe = "black",
-                    args = { "-" },
+                    args = {"-"},
                     stdin = true
                 }
             end

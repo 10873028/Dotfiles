@@ -6,5 +6,5 @@ comment.setup({
     comment_empty = true,
     create_mappings = false
 })
-vim.api.nvim_set_keymap("n", "<Leader>]", "<Cmd>CommentToggle<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("x", "<Leader>]", "<Esc><Cmd>'<,'>CommentToggle<CR>gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>]", "<Cmd>CommentToggle<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("x", "<Leader>]", "<Esc><Cmd>'<,'>CommentToggle<CR>gv", {noremap = true, silent = true})
