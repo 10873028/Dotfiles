@@ -1,6 +1,6 @@
 vim.api.nvim_buf_set_keymap(0, "n", "q", "<Cmd>q<CR>", {noremap = true, silent = true})
-vim.api.nvim_buf_set_keymap(0, "n", "cr", "v:lua._is_directory()", {noremap = true, silent = true, expr = true})
-vim.api.nvim_buf_set_keymap(0, "n", "l", "v:lua._is_directory()", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "v:lua._is_directory(\"open_directory\")", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "l", "v:lua._is_directory(\"open_or_close_tree\")", {noremap = true, silent = true, expr = true})
 vim.api.nvim_buf_set_keymap(0, "n", "h", "defx#do_action(\"cd\", \"..\")", {noremap = true, silent = true, expr = true})
 vim.api.nvim_buf_set_keymap(0, "n", "yy", "defx#do_action(\"copy\")", {noremap = true, silent = true, expr = true})
 vim.api.nvim_buf_set_keymap(0, "n", "P", "defx#do_action(\"paste\")", {noremap = true, silent = true, expr = true})

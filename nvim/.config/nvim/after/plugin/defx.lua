@@ -1,8 +1,8 @@
 if vim.fn.exists("g:loaded_defx") == 0 then return end
 
-function _G._is_directory()
+function _G._is_directory(...)
     if vim.fn["defx#is_directory"]() then
-        return vim.fn["defx#do_action"]("open_or_close_tree")
+        return vim.fn["defx#do_action"](...)
     else
         return vim.fn["defx#do_action"]("multi", {"drop", "quit"})
     end
