@@ -29,7 +29,7 @@ lspconfig.pyright.setup({
         }
     },
     handlers = {
-        [ "textDocument/publishDiagnostics" ] = vim.lsp.with(
+        ["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
             underline = true,
             virtual_text = true,
@@ -42,7 +42,7 @@ lspconfig.pyright.setup({
 lspconfig.clangd.setup({
     on_attach = on_attach,
     handlers = {
-        [ "textDocument/publishDiagnostics" ] = vim.lsp.with(
+        ["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
             underline = true,
             virtual_text = true,
@@ -55,7 +55,7 @@ lspconfig.clangd.setup({
 lspconfig.rust_analyzer.setup({
     on_attach = on_attach,
     handlers = {
-        [ "textDocument/publishDiagnostics" ] = vim.lsp.with(
+        ["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
             underline = true,
             virtual_text = true,
@@ -69,7 +69,7 @@ lspconfig.omnisharp.setup({
     on_attach = on_attach,
     cmd = {"omnisharp", "--languageserver", tostring(vim.fn.getpid())},
     handlers = {
-        [ "textDocument/publishDiagnostics" ] = vim.lsp.with(
+        ["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
             underline = true,
             virtual_text = true,

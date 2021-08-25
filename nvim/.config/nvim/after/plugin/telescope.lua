@@ -12,8 +12,8 @@ telescope.setup({
     defaults = {
         mappings = {
             i = {
-                [ "<Esc>" ] = actions.close,
-                [ "jk" ] = actions.close
+                ["<Esc>"] = actions.close,
+                ["jk"] = actions.close
             }
         }
     }
