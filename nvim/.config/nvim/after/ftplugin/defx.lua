@@ -9,3 +9,4 @@ vim.api.nvim_buf_set_keymap(0, "n", "dD", "defx#do_action(\"remove\")", {noremap
 vim.api.nvim_buf_set_keymap(0, "n", "L", "defx#do_action(\"link\")", {noremap = true, silent = true, expr = true})
 vim.api.nvim_buf_set_keymap(0, "n", "O", "defx#do_action(\"new_file\")", {noremap = true, silent = true, expr = true})
 vim.api.nvim_buf_set_keymap(0, "n", "cw", "defx#do_action(\"rename\")", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "v", "defx#do_action(\"toggle_select\")", {noremap = true, silent = true, expr = true})
