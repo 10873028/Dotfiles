@@ -62,20 +62,19 @@ z() {
     fi
 }
 
-git_branch() {
+_git_branch() {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo " ${ref##*/}"
 }
 
-conda_prompt() {
+_conda_prompt() {
     [ -z $CONDA_PREFIX ] && return
     echo " ${CONDA_PREFIX##*/}"
 }
 
 setopt prompt_subst
-PROMPT='%F{cyan}$(conda_prompt)%F{magenta}$(git_branch) %F{yellow}%1d %F{green}→ %F{white}'
+PROMPT='%F{cyan}$(_conda_prompt)%F{magenta}$(_git_branch) %F{yellow}%1d %F{green}→ %F{white}'
 RPROMPT='%(?,%F{green}owo,%F{red}ΦwΦ)'
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -91,4 +90,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
