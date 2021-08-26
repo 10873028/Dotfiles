@@ -24,5 +24,5 @@ cd $HOME/.config/st && sudo make clean install || echo -e "\e[1;31mFAILED\e[0m" 
 cd $HOME/.config/dmenu && sudo make clean install || echo -e "\e[1;31mFAILED\e[0m" && \
 git clone https://aur.archlinux.org/paru-bin.git $HOME/.config/paru || echo -e "\e[1;31mFAILED\e[0m" && \
 cd $HOME/.config/paru && makepkg -si || echo -e "\e[1;31mFAILED\e[0m" && \
-paru --sudoloop -S libxft-bgra chromium-widevine omnisharp-roslyn || echo -e "\e[1;31mFAILED\e[0m" && \
+paru --sudoloop -S libxft-bgra chromium-widevine || echo -e "\e[1;31mFAILED\e[0m" && \
 chsh --shell $(which zsh) || echo -e "\e[1;31mFAILED\e[0m" && echo -e "\e[1;32mDONE\e[0m"

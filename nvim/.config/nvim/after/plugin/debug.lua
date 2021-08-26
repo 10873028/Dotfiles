@@ -8,5 +8,3 @@ function _G.termdebug()
     if vim.fn.executable(executable) == 0 then return end
     vim.api.nvim_command("Termdebug "..executable)
 end
-
-vim.api.nvim_set_keymap("n", "<F10>", "<Cmd>lua termdebug()<CR>", {noremap = true, silent = true})
