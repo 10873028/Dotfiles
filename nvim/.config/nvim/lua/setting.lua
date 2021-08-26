@@ -32,6 +32,7 @@ vim.opt.splitbelow = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 12
 vim.opt.laststatus = 2
+vim.opt.foldmethod = "marker"
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.shortmess:append("c")
