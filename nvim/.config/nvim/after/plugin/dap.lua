@@ -6,7 +6,7 @@ vim.fn.sign_define("DapStopped", {text = "", texthl = "Errormsg"})
 
 dap.adapters.lldb = {
     type = "executable",
-    command = "/usr/bin/lldb-vscode",
+    command = "lldb-vscode",
     name = "lldb"
 }
 
@@ -26,17 +26,17 @@ dap.configurations.cpp = {
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
-dap.adapters.python = {
+dap.adapters.debugpy = {
   type = "executable",
   command = "python",
-  args = { "-m", "debugpy.adapter" }
+  args = {"-m", "debugpy.adapter"}
 }
 
 dap.configurations.python = {
     {
-        type = "python",
-        request = "launch",
         name = "Debug",
+        type = "debugpy",
+        request = "launch",
         program = "${file}",
         pythonPath = "python"
     }
