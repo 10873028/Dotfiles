@@ -1,8 +1,10 @@
 local status, dap = pcall(require, "dap")
 if not status then return end
 
-vim.fn.sign_define("DapBreakpoint", {text = "", texthl = "Moremsg"})
-vim.fn.sign_define("DapStopped", {text = "", texthl = "Errormsg"})
+vim.fn.sign_define("DapBreakpoint", {text = "", texthl = "MoreMsg"})
+vim.fn.sign_define("DapStopped", {text = "", texthl = "ErrorMsg"})
+vim.fn.sign_define("DapLogPoint", {text = "", texthl = "WarningMsg"})
+vim.fn.sign_define("DapBreakpointRejected", {text = "", texthl = "ErrorMsg"})
 
 dap.adapters.lldb = {
     type = "executable",
@@ -27,9 +29,9 @@ dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
 dap.adapters.debugpy = {
-  type = "executable",
-  command = "python",
-  args = {"-m", "debugpy.adapter"}
+    type = "executable",
+    command = "python",
+    args = {"-m", "debugpy.adapter"}
 }
 
 dap.configurations.python = {
