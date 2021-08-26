@@ -41,10 +41,3 @@ dap.configurations.python = {
         pythonPath = "python"
     }
 }
-
-vim.api.nvim_set_keymap("n", ",b", "<Cmd>lua require(\"dap\").toggle_breakpoint()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", ",r", "<Cmd>lua require(\"dap\").continue()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", ",s", "<Cmd>lua require(\"dap\").step_into()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", ",n", "<Cmd>lua require(\"dap\").step_over()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", ",f", "<Cmd>lua require(\"dap\").step_out()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", ",k", "<Cmd>lua require(\"dap.ui.widgets\").hover()<CR>", {noremap = true, silent = true})
