@@ -55,6 +55,7 @@ Requires Neovim (>= 0.5)
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs for neovim written by lua.
 - [nvim-comment](https://github.com/terrortylor/nvim-comment) - A comment toggler for Neovim, written in Lua.
 - [nvim-compe](https://github.com/hrsh7th/nvim-compe) - Auto completion Lua plugin for nvim.
+- [nvim-dap](https://github.com/mfussenegger/nvim-dap) - Debug Adapter Protocol client implementation for Neovim.
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Quickstart configurations for the Nvim LSP client.
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Nvim Treesitter configurations and abstraction layer.
 - [packer.nvim](https://github.com/wbthomason/packer.nvim) - A use-package inspired plugin manager for Neovim.
