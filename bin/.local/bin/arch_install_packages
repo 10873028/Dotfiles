@@ -10,7 +10,7 @@ neovim python-pynvim xclip \
 fcitx5 fcitx5-gtk fcitx5-qt fcitx5-chewing \
 trash-cli scrot sxiv ranger wget unzip exa bat fd ripgrep git ueberzug fzf stow cmake htop nvtop \
 evince libreoffice-fresh keepassxc qutebrowser \
-clang gdb glfw-x11 glew \
+clang lldb gdb glfw-x11 glew \
 rust rust-analyzer \
 go gopls \
 jre-openjdk jdk-openjdk \

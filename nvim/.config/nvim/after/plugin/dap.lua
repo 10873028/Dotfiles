@@ -6,13 +6,28 @@ vim.fn.sign_define("DapStopped", {text = "", texthl = "ErrorMsg"})
 vim.fn.sign_define("DapLogPoint", {text = "", texthl = "WarningMsg"})
 vim.fn.sign_define("DapBreakpointRejected", {text = "", texthl = "ErrorMsg"})
 
-dap.adapters.lldb = {
+dap.adapters.debugpy = {
     type = "executable",
-    command = "lldb-vscode",
-    name = "lldb"
+    command = "python",
+    args = {"-m", "debugpy.adapter"}
 }
 
-dap.configurations.cpp = {
+dap.adapters.lldb = {
+    type = "executable",
+    command = "lldb-vscode"
+}
+
+dap.configurations.python = {
+    {
+        name = "Debug",
+        type = "debugpy",
+        request = "launch",
+        program = "${file}",
+        pythonPath = "python"
+    }
+}
+
+dap.configurations.c = {
     {
         name = "Debug",
         type = "lldb",
@@ -25,21 +40,5 @@ dap.configurations.cpp = {
     }
 }
 
-dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = dap.configurations.cpp
-
-dap.adapters.debugpy = {
-    type = "executable",
-    command = "python",
-    args = {"-m", "debugpy.adapter"}
-}
-
-dap.configurations.python = {
-    {
-        name = "Debug",
-        type = "debugpy",
-        request = "launch",
-        program = "${file}",
-        pythonPath = "python"
-    }
-}
+dap.configurations.cpp = dap.configurations.c
+dap.configurations.rust = dap.configurations.c
