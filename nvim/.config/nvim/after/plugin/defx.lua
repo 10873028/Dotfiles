@@ -8,4 +8,4 @@ function _G._is_directory(...)
     end
 end
 
-vim.api.nvim_set_keymap("n", "<F5>", "<Cmd>Defx -resume -winwidth=30 -direction=topleft -split=vertical -show-ignored-files -columns=indent:mark:filename<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<F5>", "<Cmd>Defx -resume -winwidth=24 -direction=topleft -split=vertical -show-ignored-files -columns=indent:mark:filename<CR>", {noremap = true, silent = true})
