@@ -1,3 +1,6 @@
+vim.opt_local.number = false
+vim.opt_local.relativenumber = false
+
 vim.api.nvim_buf_set_keymap(0, "n", "q", "<Cmd>q<CR>", {noremap = true, silent = true})
 vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "v:lua._is_directory(\"open_directory\")", {noremap = true, silent = true, expr = true})
 vim.api.nvim_buf_set_keymap(0, "n", "l", "v:lua._is_directory(\"open_or_close_tree\")", {noremap = true, silent = true, expr = true})
