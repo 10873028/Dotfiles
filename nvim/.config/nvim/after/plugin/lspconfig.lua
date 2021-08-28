@@ -19,6 +19,15 @@ vim.fn.sign_define("LspDiagnosticsSignWarning", {text = ""})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = ""})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = ""})
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        underline = true,
+        virtual_text = true,
+        signs = true,
+        update_in_insert = true
+    }
+)
+
 lspconfig.pyright.setup({
     on_attach = on_attach,
     settings = {
@@ -27,40 +36,13 @@ lspconfig.pyright.setup({
                 typeCheckingMode = "off"
             }
         }
-    },
-    handlers = {
-        ["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-            underline = true,
-            virtual_text = true,
-            signs = true,
-            update_in_insert = true
-        })
     }
 })
 
 lspconfig.clangd.setup({
-    on_attach = on_attach,
-    handlers = {
-        ["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-            underline = true,
-            virtual_text = true,
-            signs = true,
-            update_in_insert = true
-        })
-    }
+    on_attach = on_attach
 })
 
 lspconfig.rust_analyzer.setup({
-    on_attach = on_attach,
-    handlers = {
-        ["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-            underline = true,
-            virtual_text = true,
-            signs = true,
-            update_in_insert = true
-        })
-    }
+    on_attach = on_attach
 })
