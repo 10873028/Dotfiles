@@ -64,3 +64,4 @@ Requires Neovim (>= 0.5)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive) - A Git wrapper so awesome, it should be illegal.
 - [vim-mundo](https://github.com/simnalamburt/vim-mundo) - Vim undo tree visualizer.
 - [vim-vsnip](https://github.com/hrsh7th/vim-vsnip) - Snippet plugin for vim/nvim that supports LSP/VSCode's snippet format.
+- [vista.vim](https://github.com/liuchengxu/vista.vim) - Viewer & Finder for LSP symbols and tags.
