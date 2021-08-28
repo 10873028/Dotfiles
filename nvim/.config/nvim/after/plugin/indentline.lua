@@ -1,4 +1,5 @@
 local status, indentline = pcall(require, "indent_blankline")
+checkhealth.indentline = status
 if not status then return end
 
 indentline.setup({

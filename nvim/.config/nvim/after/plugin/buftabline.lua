@@ -1,4 +1,5 @@
 local status, buftabline = pcall(require, "buftabline")
+checkhealth.buftabline = status
 if not status then return end
 
 buftabline.setup({

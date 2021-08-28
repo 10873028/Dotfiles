@@ -1,4 +1,5 @@
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
+checkhealth.treesitter = status
 if not status then return end
 
 treesitter.setup({

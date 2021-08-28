@@ -1,4 +1,5 @@
 local status, comment = pcall(require, "nvim_comment")
+checkhealth.comment = status
 if not status then return end
 
 comment.setup({

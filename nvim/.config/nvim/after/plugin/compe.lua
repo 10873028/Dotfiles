@@ -1,4 +1,5 @@
 local status, compe = pcall(require, "compe")
+checkhealth.compe = status
 if not status then return end
 
 function _G._smart_tab()

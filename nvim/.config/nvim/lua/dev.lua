@@ -13,3 +13,5 @@ function _G.dump(...)
     local objs = vim.tbl_map(vim.inspect, {...})
     print(unpack(objs))
 end
+
+checkhealth = {}

@@ -1,4 +1,6 @@
-if vim.fn.exists("g:loaded_defx") == 0 then return end
+local status = vim.fn.exists("g:loaded_defx") == 1
+checkhealth.defx = status
+if not status then return end
 
 function _G._is_directory(...)
     if vim.fn["defx#is_directory"]() then

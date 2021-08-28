@@ -1,4 +1,5 @@
 local status, lualine = pcall(require, "lualine")
+checkhealth.lualine = status
 if not status then return end
 
 lualine.setup({

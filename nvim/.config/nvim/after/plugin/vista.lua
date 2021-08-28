@@ -1,4 +1,6 @@
-if vim.fn.exists("g:loaded_vista") == 0 then return end
+local status = vim.fn.exists("g:loaded_vista") == 1
+checkhealth.vista = status
+if not status then return end
 
 vim.api.nvim_set_var("vista_default_executive", "nvim_lsp")
 vim.api.nvim_set_var("vista#renderer#enable_icon", 0)

@@ -1,4 +1,5 @@
 local status, telescope = pcall(require, "telescope")
+checkhealth.telescope = status
 if not status then return end
 local actions = require("telescope.actions")
 

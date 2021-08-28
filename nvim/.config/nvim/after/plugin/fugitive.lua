@@ -1,4 +1,6 @@
-if vim.fn.exists("g:loaded_fugitive") == 0 then return end
+local status = vim.fn.exists("g:loaded_fugitive") == 1
+checkhealth.fugitive = status
+if not status then return end
 
 function _G._smart_left() return vim.o.diff and _t("<Cmd>diffget //2<CR>") or _t("<Left>") end
 function _G._smart_right() return vim.o.diff and _t("<Cmd>diffget //3<CR>") or _t("<Right>") end

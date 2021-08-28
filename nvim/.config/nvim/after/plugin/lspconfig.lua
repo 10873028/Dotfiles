@@ -1,4 +1,5 @@
 local status, lspconfig = pcall(require, "lspconfig")
+checkhealth.lspconfig = status
 if not status then return end
 local on_attach = function(client, bufnr)
     local opts = {noremap = true, silent = true}

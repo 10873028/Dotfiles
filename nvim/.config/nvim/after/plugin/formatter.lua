@@ -1,4 +1,5 @@
 local status, formatter = pcall(require, "formatter")
+checkhealth.formatter = status
 if not status then return end
 
 formatter.setup({
