@@ -1,6 +1,6 @@
+require("dev")
 require("setting")
 require("keymap")
-require("dev")
 require("netrw")
 require("term")
 require("surround")
