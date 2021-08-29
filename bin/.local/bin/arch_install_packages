@@ -4,12 +4,12 @@
 sudo timedatectl set-ntp true
 sudo hwclock --systohc
 sudo pacman -Syy --quiet --needed \
-xorg xorg-xinit xautolock qtile python-psutil xwallpaper picom \
+xorg gnome gdm \
 zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search \
 neovim python-pynvim xclip \
 fcitx5 fcitx5-gtk fcitx5-qt fcitx5-chewing \
 trash-cli scrot sxiv ranger wget unzip exa bat fd ripgrep git ueberzug fzf stow cmake htop nvtop \
-evince libreoffice-fresh keepassxc qutebrowser \
+libreoffice-fresh keepassxc qutebrowser \
 clang gdb glfw-x11 glew \
 rust rust-analyzer \
 go gopls \
@@ -19,6 +19,7 @@ pyright python-black python-pip \
 nodejs npm \
 lua lua-language-server \
 ttf-jetbrains-mono ttf-nerd-fonts-symbols terminus-font ttf-arphic-ukai noto-fonts noto-fonts-cjk noto-fonts-emoji || echo -e "\e[1;31mFAILED\e[0m" && \
+sudo systemctl enable gdm || echo -e "\e[1;31mFAILED\e[0m" && \
 cd $HOME/dotfiles && make install || echo -e "\e[1;31mFAILED\e[0m" && \
 cd $HOME/.config/st && sudo make clean install || echo -e "\e[1;31mFAILED\e[0m" && \
 cd $HOME/.config/dmenu && sudo make clean install || echo -e "\e[1;31mFAILED\e[0m" && \

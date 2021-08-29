@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 # script to install arch linux.
-# finish these before execute this script. (check archlinux.org to get much detail guide)
-# 1. partition (this script is using efi bootloader, make sure using uefi boot and parted in gpt)
-# 2. mount linux filesystem to /mnt, efi filesystem to /mnt/boot/efi
-# 3. bootstrap /mnt base linux-lts linux-firmware amd-ucode(or intel-ucode) git
-# 4. genfstab -U /mnt >> /mnt/etc/fstab (optional, can do it later, but recommand do it now)
 
 while [[ -z $INSTALLERHOSTNAME ]]
 do
@@ -16,7 +11,7 @@ do
     read -r -p "Username: " INSTALLERUSERNAME
     for (( i=0; i<${#INSTALLERUSERNAME}; i++ ))
     do
-        if [[ ${INSTALLERUSERNAME:$i:1} != [[:lower:]] ]] # only lower cases allowed
+        if [[ ${INSTALLERUSERNAME:$i:1} != [[:lower:]] ]]
         then
             echo -e "$INSTALLERUSERNAME is not valid"
             INSTALLERUSERNAME=""
@@ -30,41 +25,32 @@ do
     read -r -p "Password: " INSTALLERPASSWORD
 done
 
-ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime # setting localtime (change depends on where you at)
-hwclock --systohc # setting hardware clock
-sed -i '177s/.//' /etc/locale.gen # uncomment en_US.UTF-8 in locale.gen
+ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
+hwclock --systohc
+sed -i '177s/.//' /etc/locale.gen
 locale-gen
-echo "LANG=en_US.UTF-8" >> /etc/locale.conf # setting locale
-echo -e $INSTALLERHOSTNAME >> /etc/hostname # setting hostname
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+echo -e $INSTALLERHOSTNAME >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo -e "127.0.1.1 $INSTALLERHOSTNAME.localdomain $INSTALLERHOSTNAME" >> /etc/hosts
-echo root:$INSTALLERPASSWORD | chpasswd # setting root password
+echo root:$INSTALLERPASSWORD | chpasswd
 
-# grub efiboomgr: bootloader
-# openssh: ssh utils
-# networkmanager: network
-# libimobiledevice: mobile network(for iphone tethering)
-# alsa-utils pulseaudio pulseaudio-alsa(optional, some device may need it): audio
-# nvidia-lts nvidia-settings nvidia-utils: GPU driver
-# bash-completion: bash completion
-pacman -Syy --needed grub efibootmgr networkmanager openssh libimobiledevice base-devel linux-lts-headers alsa-utils pulseaudio pulseaudio-alsa bash-completion rsync reflector nvidia-lts nvidia-utils nvidia-settings
+pacman -Syy --needed grub efibootmgr networkmanager openssh libimobiledevice base-devel linux-lts-headers bash-completion rsync reflector nvidia-lts nvidia-utils nvidia-settings
 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB # configure grub
-grub-mkconfig -o /boot/grub/grub.cfg # generate grub config
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
 
-systemctl enable sshd # depend on openssh.
-systemctl enable NetworkManager # depend on networkmanager.
-systemctl enable fstrim.timer # recommanded if using ssd.
-systemctl enable reflector.timer # depend on reflector.
+systemctl enable sshd
+systemctl enable NetworkManager
+systemctl enable fstrim.timer
+systemctl enable reflector.timer
 
-useradd -m $INSTALLERUSERNAME # create user
-echo $INSTALLERUSERNAME:$INSTALLERPASSWORD | chpasswd # setting user password
-echo -e "$INSTALLERUSERNAME ALL=(ALL) ALL" >> /etc/sudoers.d/$INSTALLERUSERNAME # add user to sudoer
+useradd -m $INSTALLERUSERNAME
+echo $INSTALLERUSERNAME:$INSTALLERPASSWORD | chpasswd
+echo -e "$INSTALLERUSERNAME ALL=(ALL) ALL" >> /etc/sudoers.d/$INSTALLERUSERNAME
 
-# >>> this block is for optional commands >>>
-mv /dotfiles /home/$INSTALLERUSERNAME/ # move my configs to user home directory
-chown -R $INSTALLERUSERNAME:$INSTALLERUSERNAME /home/$INSTALLERUSERNAME/dotfiles # change ownership to user
-# <<< end of optional commands <<<
+mv /dotfiles /home/$INSTALLERUSERNAME/
+chown -R $INSTALLERUSERNAME:$INSTALLERUSERNAME /home/$INSTALLERUSERNAME/dotfiles
 
 echo -e "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
