@@ -36,14 +36,16 @@
 ## [Neovim](https://github.com/neovim/neovim)
 
     nvim/
-    ├─ after/
-    │  ├─ ftplugin/
-    │  └─ plugin/
-    └─ init.lua
+    ├─ after/ path to overrule or add config settings.
+    │  ├─ ftplugin/ configs for different filetypes.
+    │  └─ plugin/ configs for plugins.
+    ├─ lua/ configs for global basic settings.
+    └─ init.lua default config for neovim to load.
 
 ### Plugins
 
-`:PackerSync`
+`:PackerSync` download and compile plugins through plugin manager.
+`:lua dump(checkhealth)` check if every configs get loaded.
 
 Requires Neovim (>= 0.5)
 
