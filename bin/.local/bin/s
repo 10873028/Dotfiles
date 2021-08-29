@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
-# script to create a file as bash script and executable.
+# script to create a script file and chmod to executable.
 
-if [[ $# > 1 ]]
+while [[ -z $SCRIPTLANG ]]
+do
+    read -r -p "Executive Language: " SCRIPTLANG
+done
+
+while [[ -z $FILENAME ]]
+do
+    read -r -p "Filename: " FILENAME
+    if [[ -f $FILENAME ]] || [[ -d $FILENAME ]]
+    then
+        echo -e "\e[1;31merror: \e[0m$FILENAME already exists."
+        FILENAME=""
+    fi
+done
+
+echo -e "#!/usr/bin/env $SCRIPTLANG" > $FILENAME && chmod 700 $FILENAME && echo -e "\e[1;32mDONE\e[0m"
+
+if [[ ! -z $EDITOR ]]
 then
-    echo -e "\e[1;31merror: \e[0mtoo may arguments."
-    exit 1
-elif [[ -z $1 ]]
-then
-    echo -e "\e[1;31merror: \e[0margument not found."
-    exit 1
-elif [[ -f $1 ]]
-then
-    echo -e "\e[1;31merror: \e[0m$1 already exists."
-    exit 1
-elif [[ -z $EDITOR ]]
-then
-    echo -e "\e[1;31merror: \e[0meditor not found."
-    exit 1
+    $EDITOR $FILENAME || exit 1
 fi
-
-echo '#!/usr/bin/env bash' > $1 && chmod 700 $1
-$EDITOR $1
 exit 0
