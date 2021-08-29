@@ -2,5 +2,5 @@ local status, tokyonight = pcall(require, "tokyonight")
 checkhealth.tokyonight = status
 if not status then return end
 
-vim.api.nvim_set_var("tokyonight_style", "night")
+vim.api.nvim_set_var("tokyonight_style", "storm")
 tokyonight.colorscheme()
