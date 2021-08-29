@@ -45,6 +45,7 @@
 ### Plugins
 
 `:PackerSync` download and compile plugins through plugin manager.
+
 `:lua dump(checkhealth)` check if every configs get loaded.
 
 Requires Neovim (>= 0.5)
