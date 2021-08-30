@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+fcitx5 &
+sleep 30
+xset r rate 300 50
+setxkbmap -option caps:escape

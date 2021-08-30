@@ -1,7 +1,8 @@
 [Desktop Entry]
-Name=fcitx5
-Comment=fcitx5
-Exec=fcitx5
+Name=autostart
+Comment=autostart
+Exec=autostart
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=5

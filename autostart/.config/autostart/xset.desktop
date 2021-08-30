@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=xset
-Comment=xset r rate 300 50
-Exec=xset r rate 300 50
-Terminal=false
-Type=Application
-X-GNOME-Autostart-enabled=true
