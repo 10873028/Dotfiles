@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# script to create a desktop file
+
+while [[ -z $FILENAME ]]
+do
+    read -r -p "Filename: " FILENAME
+    if [[ -f "$FILENAME.desktop" ]] || [[ -d "$FILENAME.desktop" ]]
+    then
+        echo -e "\e[1;31merror: \e[0m$FILENAME.desktop already exists."
+        FILENAME=""
+    fi
+done
+
+echo -e "[Desktop Entry]\nName=\nComment=\nExec=\nTerminal=\nType=\nX-GNOME-Autostart-enabled=\nX-GNOME-Autostart-Delay=" > $FILENAME.desktop && echo -e "\e[1;32mDONE\e[0m"
+
+if [[ ! -z $EDITOR ]]
+then
+    $EDITOR $FILENAME.desktop || exit 1
+fi
+exit 0
