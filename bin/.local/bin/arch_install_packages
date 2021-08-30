@@ -4,7 +4,7 @@
 sudo timedatectl set-ntp true
 sudo hwclock --systohc
 sudo pacman -Syy --quiet --needed \
-xorg gnome gdm \
+xorg gnome-shell gnome-control-center gnome-backgrounds evince gdm \
 zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search \
 neovim python-pynvim xclip \
 fcitx5 fcitx5-gtk fcitx5-qt fcitx5-chewing \
