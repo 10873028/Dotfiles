@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # script to clean up the cache directory, bash files, less history, pacman cache files and orphans.
 
+sudo -v
 printf "cleaning trash..."
 trash-empty 2> /dev/null && echo -e "\e[1;32mDONE\e[0m" || echo -e "\e[1;31mFAILED\e[0m"
 printf "cleaning bash history..."
