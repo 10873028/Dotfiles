@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ $# != 1 ]] || [[ -f $1.h ]] || [[ -f $1.cpp ]]; then
+    exit 1
+fi
+
+printf "#pragma once\n#ifndef __${1^^}_H\n#define __${1^^}_H\n\n#endif" > "$1.h" || exit 2
+printf "#include \"$1.h\"" > "$1.cpp" || exit 3

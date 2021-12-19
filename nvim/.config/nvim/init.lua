@@ -1,0 +1,7 @@
+require("util")
+require("settings")
+require("keymaps")
+require("netrw")
+require("term")
+require("surround")
+require("plugins")

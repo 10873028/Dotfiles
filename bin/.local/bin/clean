@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+sudo -v
+yes | trash-empty &>/dev/null
+rm -rf ~/.bash* &>/dev/null
+rm -rf $ZDOTDIR/.histfile* $ZDOTDIR/.zcompdump &>/dev/null
+rm -rf ~/.python_history &>/dev/null
+rm -rf ~/.lesshst &>/dev/null
+rm -rf ~/.xsession-errors* &>/dev/null
+rm -rf ~/Downloads/* &>/dev/null
+rm -rf ~/.cache/* &>/dev/null
+rm -rf ~/.vim* &>/dev/null
+sudo journalctl --vacuum-time=1week &>/dev/null
+yes | sudo pacman -Scc &>/dev/null
+orphans=$(pacman -Qdtq 2>/dev/null)
+[[ -z $orphans ]] && exit 0
+yes | sudo pacman -Rns $orphans &>/dev/null

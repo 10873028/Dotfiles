@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+date="$(date +"%Y%m%d_%H%M")"
+
+if [[ $# > 1 ]]; then
+    exit 1
+fi
+
+while getopts ':p:d' argv; do
+    case $argv in
+        d)
+            if [[ -f $date ]] || [[ -d $date ]]; then
+                exit 1
+            fi
+            mkdir $date || exit 2
+            exit 0 ;;
+        p)
+            if [[ -f $date ]] || [[ -d $date ]]; then
+                exit 1
+            fi
+            mkdir $date && cd $date || exit 2
+            ${EDITOR:-nvim} $date.$OPTARG || exit 3
+            exit 0 ;;
+        :)
+            if [[ -f $date ]] || [[ -d $date ]]; then
+                exit 1
+            fi
+            mkdir $date && cd $date || exit 2
+            ${EDITOR:-nvim} $date || exit 3
+            exit 0 ;;
+    esac
+done
+
+if [[ -z $1 ]]; then
+    if [[ -f $date ]] || [[ -d $date ]]; then
+        exit 1
+    else
+        ${EDITOR:-nvim} $date || exit 3
+    fi
+else
+    if [[ -f $date.$1 ]] || [[ -d $date.$1 ]]; then
+        exit 1
+    else
+        ${EDITOR:-nvim} $date.$1 || exit 3
+    fi
+fi

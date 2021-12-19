@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pkg=$(pacman -Qq | fzf)
+if [[ -z $pkg ]]; then
+    exit 1
+fi
+sudo pacman -Rns $pkg

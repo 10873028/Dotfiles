@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+while [[ -z $lang ]]; do
+    read -r -p "Executive Language: " lang
+    if [[ -z $(which $lang 2>/dev/null) ]]; then
+        lang=""
+    fi
+done
+
+while [[ -z $filename ]]; do
+    read -r -p "Filename: " filename
+    if [[ -f $filename ]] || [[ -d $filename ]]; then
+        printf "$filename already exists.\n"
+        filename=""
+    fi
+done
+
+printf "#!/usr/bin/env $lang" > $filename && chmod 700 $filename
+
+${EDITOR:-nvim} $filename || exit 1

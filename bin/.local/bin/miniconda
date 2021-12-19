@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ -d "miniconda.sh" ]]; then
+    exit 1
+fi
+
+if [[ ! -f "miniconda.sh" ]]; then
+    wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh || exit 2
+fi
+
+if [[ -d "miniconda3" ]]; then
+    exit 3
+fi
+
+bash miniconda.sh

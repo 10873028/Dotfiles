@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+sudo pacman -Syy --quiet --needed \
+zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions \
+neovim python-pynvim python-send2trash \
+trash-cli wget zip unzip exa bat fd ripgrep git fzf stow make which man-db \
+gcc clang lldb \
+pyright python-black python-debugpy
+
+chsh --shell /bin/zsh
