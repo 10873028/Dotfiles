@@ -1,0 +1,5 @@
+alias sudo='sudo -v;sudo '
+alias ll='exa -la --group-directories-first'
+alias cs='clear&&exa -a --group-directories-first'
+alias ra='. ranger'
+alias vim='nvim'

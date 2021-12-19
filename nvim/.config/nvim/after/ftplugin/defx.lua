@@ -1,0 +1,20 @@
+vim.opt_local.number = false
+vim.opt_local.relativenumber = false
+
+vim.api.nvim_buf_set_keymap(0, "n", "q", "defx#do_action('quit')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "<BS>", "v:lua._defx_bs()", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "v:lua._defx_cr()", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "l", "v:lua._defx_l()", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "h", "v:lua._defx_bs()", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "yy", "defx#do_action('copy')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "P", "defx#do_action('paste')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "dd", "defx#do_action('move')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "dD", "defx#do_action('remove_trash')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "L", "defx#do_action('link')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "O", "defx#do_action('new_file')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "cw", "defx#do_action('rename')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "v", "defx#do_action('toggle_select')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "uv", "defx#do_action('clear_select_all')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "V", "defx#do_action('toggle_select_all')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "<F5>", "defx#do_action('quit')", {noremap = true, silent = true, expr = true})
+vim.api.nvim_buf_set_keymap(0, "n", "i", "defx#do_action('preview')", {noremap = true, silent = true, expr = true})

@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# script to install arch linux.
+# finish these before execute this script. (check archlinux.org to get much detail guide)
+# 1. partition (this script is using efi bootloader, make sure using uefi boot and parted in gpt)
+# 2. mount linux filesystem to /mnt, efi filesystem to /mnt/boot/efi
+# 3. bootstrap /mnt base linux-lts linux-firmware amd-ucode(or intel-ucode) git
+# 4. genfstab -U /mnt >> /mnt/etc/fstab (optional, can do it later, but recommand do it now)
+
+while [[ -z $hostname ]]
+do
+    read -r -p "Hostname: " hostname
+done
+
+while [[ -z $username ]]
+do
+    read -r -p "Username: " username
+    for (( i=0; i<${#username}; i++ ))
+    do
+        if [[ ${username:$i:1} != [[:lower:]] ]] # only lower cases allowed
+        then
+            printf "$username is not valid\n"
+            username=""
+            break
+        fi
+    done
+done
+
+while [[ -z $pwd ]]
+do
+    read -r -p "Password: " pwd
+done
+
+ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime # setting localtime (change depends on where you at)
+hwclock --systohc # setting hardware clock
+sed -i "177s/.//" /etc/locale.gen # uncomment en_US.UTF-8 in locale.gen
+locale-gen # generate locale file
+printf "LANG=en_US.UTF-8" >> /etc/locale.conf # setting locale
+# >>> setting hosts >>>
+printf "$hostname" >> /etc/hostname
+printf "127.0.0.1 localhost\n" >> /etc/hosts
+printf "::1       localhost\n" >> /etc/hosts
+printf "127.0.1.1 $hostname.localdomain $hostname" >> /etc/hosts
+# <<< end of setting hosts <<<
+printf "root:$pwd" | chpasswd # setting root password
+
+# grub efiboomgr: bootloader
+# openssh: ssh utils
+# networkmanager: network
+# bluez bluez-utils pulseaudio-bluetooth: bluetooth
+# libimobiledevice: mobile network(for iphone tethering network)
+# alsa-utils pulseaudio pulseaudio-alsa: audio
+# nvidia-lts nvidia-settings nvidia-utils: GPU driver
+# bash-completion: bash completion
+pacman -Syy --needed grub efibootmgr networkmanager bluez bluez-utils openssh libimobiledevice base-devel linux-headers alsa-utils pulseaudio pulseaudio-alsa pulseaudio-bluetooth bash-completion rsync reflector nvidia nvidia-utils nvidia-settings
+
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB # configure grub
+grub-mkconfig -o /boot/grub/grub.cfg # generate grub config
+
+systemctl enable sshd # depend on openssh.
+systemctl enable NetworkManager # depend on networkmanager.
+systemctl enable fstrim.timer # recommanded if using ssd.
+systemctl enable reflector.timer # depend on reflector.
+
+useradd -m $username # create user
+printf "$username:$pwd" | chpasswd # setting user password
+printf "$username ALL=(ALL) ALL" >> /etc/sudoers.d/$username # add user to sudoer
+
+# >>> optional commands >>>
+mv /dotfiles /home/$username/ # move my configs to user home directory
+chown -R $username:$username /home/$username/dotfiles # change ownership to user
+# <<< end of optional commands <<<
+
+printf "\e[1;32mDone! Type exit, umount -R /mnt and reboot.\e[0m\n"

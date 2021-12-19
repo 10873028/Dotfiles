@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# install os-prober for dualboot windows and linux in the same drive using same efi partition with grub
+
+pacman -S --needed os-prober
+printf "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+grub-mkconfig -o /boot/grub/grub.cfg

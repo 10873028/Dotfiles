@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+bookmarks="google\nptt\ngithub\nicloud\nnetflix\nreddit\nyoutube\ntwitch\nbilibili\nexcalidraw\nqtile\nkaggle\nleetcode\npixiv\naddon\nlocalhost"
+selected=$(printf $bookmarks | fzf) || exit 1
+
+case $selected in
+    "github")
+        ${BROWSER:-firefox} "https://github.com/ykc1206/"
+        ;;
+    "ptt")
+        ${BROWSER:-firefox} "https://term.ptt.cc/"
+        ;;
+    "icloud")
+        ${BROWSER:-firefox} "https://www.icloud.com"
+        ;;
+    "google")
+        ${BROWSER:-firefox} "https://www.google.com.tw/"
+        ;;
+    "netflix")
+        ${BROWSER:-firefox} "https://www.netflix.com/tw/"
+        ;;
+    "reddit")
+        ${BROWSER:-firefox} "https://www.reddit.com/"
+        ;;
+    "youtube")
+        ${BROWSER:-firefox} "https://www.youtube.com/"
+        ;;
+    "excalidraw")
+        ${BROWSER:-firefox} "https://excalidraw.com/"
+        ;;
+    "qtile")
+        ${BROWSER:-firefox} "http://qtile.org/"
+        ;;
+    "kaggle")
+        ${BROWSER:-firefox} "https://www.kaggle.com/"
+        ;;
+    "leetcode")
+        ${BROWSER:-firefox} "https://leetcode.com/"
+        ;;
+    "twitch")
+        ${BROWSER:-firefox} "https://www.twitch.tv"
+        ;;
+    "pixiv")
+        ${BROWSER:-firefox} "https://www.pixiv.net"
+        ;;
+    "bilibili")
+        ${BROWSER:-firefox} "https://www.bilibili.com"
+        ;;
+    "addon")
+        ${BROWSER:-firefox} "https://addons.mozilla.org/zsh-TW/firefox/addon/bitwarden-password-manager/"
+        ;;
+    "localhost")
+        ${BROWSER:-firefox} "localhost"
+        ;;
+esac

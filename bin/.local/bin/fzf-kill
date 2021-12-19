@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+selected=$(ps -a -u $USER | awk 'NR!=1{print $1" "$4}' | fzf) || exit 1
+pid=$(awk '{print $1}' <<< $selected)
+selected=$(awk '{print $2}' <<< $selected)
+confirm=$(printf "Yes\nNo" | fzf) || exit 1
+
+[[ $confirm = "Yes" ]] && kill -9 $pid

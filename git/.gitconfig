@@ -1,0 +1,17 @@
+[user]
+    name = ykc
+    email = ykc1206@icloud.com
+[core]
+    atocrif = input
+    editor = nvim
+[diff]
+    tool = nvim
+[difftool "nvim"]
+    cmd = "nvim -d $LOCAL $REMOTE"
+[url "git@github.com:"]
+    pushInsteadOf = https://github.com/
+[commit]
+    template = ~/.gitmessage
+[alias]
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit
+    amend = commit --amend

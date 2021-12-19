@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+selected=$(printf "mount\nunmount" | fzf) || exit 1
+case $selected in
+    "mount")
+        selected=$(lsblk -rno name,size,mountpoint,fstype | awk 'NF==3{print $1" "$2}' | fzf) || exit 1
+        udisksctl mount -b /dev/${selected%% }
+        ;;
+    "unmount")
+        selected=$(lsblk -rno name,size,mountpoint,fstype | awk 'NF==4{print $1" "$2" "$3}' | fzf) || exit 1
+        udisksctl unmount -b /dev/${selected%% }
+        ;;
+esac

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+IFS=:
+cmd=$(stest -flx $PATH | sort -u | fzf)
+$cmd

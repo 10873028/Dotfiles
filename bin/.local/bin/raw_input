@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# set mouse to raw input
+
+printf "Section \"InputClass\"\n\tIdentifier \"My Mouse\"\n\tMatchIsPointer \"yes\"\n\tOption \"AccelerationProfile\" \"-1\"\n\tOption \"AccelerationScheme\" \"none\"\n\tOption \"AccelSpeed\" \"-1\"\nEndSection" | sudo tee -a /etc/X11/xorg.conf.d/50-mouse-acceleration.conf

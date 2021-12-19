@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# script to install steam in arch linux.
+
+read -p "Make sure the multilib repo is enabled? [Y]/n " confirm 
+
+case $confirm in
+    "Y" | "y" | "Yes" | "yes" | "")
+        sudo pacman -Sy --needed steam ttf-liberation wqy-zenhei
+        ;;
+esac

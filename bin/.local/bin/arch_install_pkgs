@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# script to setup working environment.
+
+# set time
+sudo timedatectl set-ntp true
+
+# set hardware clock
+sudo hwclock --systohc
+
+# install packages
+sudo pacman -Syy --quiet --needed \
+xfce4 xorg-server xorg-xrandr xorg-xset xorg-setxkbmap \
+network-manager-applet volumeicon \
+lightdm lightdm-gtk-greeter \
+zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions \
+neovim python-pynvim python-send2trash xclip \
+fcitx5 fcitx5-gtk fcitx5-qt fcitx5-chewing \
+tmux trash-cli ranger wget zip unzip exa bat fd ripgrep git fzf stow \
+evince firefox scrot sxiv cmake ueberzug \
+clang gdb lldb glfw-x11 glew glm vtk hdf5 opencv qt6 \
+rust rust-analyzer \
+go gopls \
+jre-openjdk jdk-openjdk \
+dotnet-sdk \
+pyright python-black python-pip python-debugpy \
+nodejs npm \
+lua lua-language-server \
+ttf-hack ttf-nerd-fonts-symbols-mono \
+ttf-arphic-uming ttf-arphic-ukai \
+noto-fonts noto-fonts-cjk noto-fonts-emoji
+
+# enable lightdm
+sudo systemctl enable lightdm.service
+
+# symbolic link configs
+cd $HOME/dotfiles && make install
+
+# change default shell to zsh
+chsh --shell $(which zsh)

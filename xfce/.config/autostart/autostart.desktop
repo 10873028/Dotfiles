@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=autostart
+Exec=autostart
+StartupNotify=false
+Terminal=false
